@@ -1,0 +1,12 @@
+.snakemake
+__pycache__
+mutect/*
+
+# external databases for mutect2
+resources/panel_of_normals/hg19/*
+resources/panel_of_normals/hg38/*
+resources/germline_resource/hg19/*
+resources/germline_resource/hg38/*
+resources/common_alleles/hg19/*
+resources/common_alleles/hg38/*
+

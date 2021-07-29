@@ -1,0 +1,9 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - gatk4==4.1.1.0 
+  - varscan==2.4
+  - samtools==1.11
+  - vcftools==0.1.16
