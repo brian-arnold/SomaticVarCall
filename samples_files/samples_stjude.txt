@@ -1,0 +1,6 @@
+PATIENT_ID      SAMPLE_TYPE     BAM_PATH
+SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A2.bam
+SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A3.bam
+SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A4.bam
+SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A5.bam
+SJHGG010325     normal  /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_G2.bam

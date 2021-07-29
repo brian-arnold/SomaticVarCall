@@ -4,7 +4,9 @@ from functions import *
 import random
 configfile: "config.yaml"
 
-INTERVALS = [str(i) for i in range(1,4)]
+INTERVALS = [str(i) for i in range(1,config['autosomes_to_genotype']+1)]
+if config['genotype_sexchroms']:
+    INTERVALS.extend(["X","Y"])
 
 rule all:
     input:

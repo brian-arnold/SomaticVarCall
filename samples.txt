@@ -1,6 +1,7 @@
 PATIENT_ID      SAMPLE_TYPE     BAM_PATH
-SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A2.bam
-SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A3.bam
-SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A4.bam
-SJHGG010325     tumor   /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_A5.bam
-SJHGG010325     normal  /n/fs/ragr-data/datasets/DIPG/010325/bam/SJHGG010325_G2.bam
+A17     tumor  /opt/ragr/zaccaria/Gundem_15/A17/A17A.bam 
+A17     tumor  /opt/ragr/zaccaria/Gundem_15/A17/A17C.bam 
+A17     tumor  /opt/ragr/zaccaria/Gundem_15/A17/A17D.bam 
+A17     tumor  /opt/ragr/zaccaria/Gundem_15/A17/A17E.bam 
+A17     tumor  /opt/ragr/zaccaria/Gundem_15/A17/A17F.bam
+A17     normal /opt/ragr/zaccaria/Gundem_15/A17/A17B.bam

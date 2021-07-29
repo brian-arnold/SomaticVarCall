@@ -4,16 +4,13 @@ reference: /n/fs/ragr-data/datasets/ref-genomes/GRCh37_NCBI/GRCh37.p13.fa
 
 samples: samples.txt
 
-autosomes_to_genotype: 23
-genotype_sexchroms: True
-
 resources:
     varscan:
         memory: 30000 # Allocated memory (in MB)
 
 mutect2:
     # note, all supplementary database VCF files must be indexed, with .idx prefix
-    pon: resources/panel_of_normals/hg19/Mutect2-WGS-panel-b37.vcf.gz
+    pon: resources/panel_of_normals/hg19/Mutect2-exome-panel.vcf.gz
     germline_resource: resources/germline_resource/hg19/af-only-gnomad.raw.sites.vcf.gz
     common_alleles: resources/common_alleles/hg19/small_exac_common_3.vcf.gz
 
