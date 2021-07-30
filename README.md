@@ -1,5 +1,7 @@
 Simple snakemake workflow to detect somatic variants in tumors. At the moment, this code is optimized to run on Computer Science Department's HPC at Princeton University.
 
+Please make sure that BAM files have been pre-processed for variant calling. This may include e.g. marking duplicates for WGS BAMs.
+
 Not included in this repo are various external resources that facilitate identifying somatic mutations and excluding germline mutations. These can be found in the `resources` subdir.
 
 Many resources for Mutect2 can be found in google cloud storage. See what is available using:
