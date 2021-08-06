@@ -1,0 +1,21 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf mutect/A17/filtered.vcf
+	--max-alleles 2
+	--min-alleles 2
+	--recode
+	--remove-filtered-all
+	--stdout
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=germline,Description="Evidence indicates this site is germline, not somatic">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in INFO entry: ID=RPA,Number=.,Type=Integer,Description="Number of times tandem repeat unit is repeated, for each allele (including reference)">
+After filtering, kept 5 out of 5 Individuals
+Outputting VCF file...
+After filtering, kept 180717 out of a possible 1458355 Sites
+Run Time = 7.00 seconds

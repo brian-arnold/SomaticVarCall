@@ -2,7 +2,8 @@ import os
 from collections import defaultdict
 from snakemake import load_configfile
 
-config = load_configfile('config.yaml')
+config = load_configfile('config_files/config_stjude.yaml')
+#config = load_configfile('config.yaml')
 
 # This file contains (1) functions used by the snakemake rules
 # and (2) global variables accessed by these functions, e.g.
@@ -59,7 +60,35 @@ def make_all_input_mutect():
         #paths =  [  os.path.join( "mutect", p, f"unfiltered_{i}.vcf") for p in patients for i in range(1,24) ]
         #paths =  [  os.path.join( "mutect", p, "read-orientation-model.tar.gz") for p in patients ]
         #paths =  [  os.path.join( "mutect", p, "filtered.vcf") for p in patients ]
-        paths =  [  os.path.join( "mutect", p, "filtered_PASS_biallelic.vcf") for p in patients ]
+        paths =  [  os.path.join( "mutect", p, "filtered_PASS_biallelic.vcf.gz") for p in patients ]
+        print(paths)
+        return paths
+
+def make_all_input_intersect():
+    # output is 1 vcf per patient, 
+    patients = set()
+    with open(config["samples"], "r") as f:
+        for l in f:
+            if not l.startswith("PATIENT_ID"):
+                info = l.strip().split() 
+                patients.add( info[0] )
+        #paths =  [  os.path.join( "mutect", p, f"unfiltered_{i}.vcf") for p in patients for i in range(1,24) ]
+        #paths =  [  os.path.join( "mutect", p, "read-orientation-model.tar.gz") for p in patients ]
+        #paths =  [  os.path.join( "mutect", p, "filtered.vcf") for p in patients ]
+        paths =  [  os.path.join(f"intersect/{p}/intersection.vcf.gz") for p in patients ]
+        print(paths)
+        return paths
+
+def make_all_input_strelka():
+    # output is 1 vcf per patient, 
+    patients = set()
+    with open(config["samples"], "r") as f:
+        for l in f:
+            if not l.startswith("PATIENT_ID"):
+                info = l.strip().split() 
+                patients.add( info[0] )
+        #paths =  [  os.path.join( "strelka", p, "combined_1.vcf.gz") for p in patients ]
+        paths =  [  os.path.join( "strelka", p, "multisample_calls.vcf.gz") for p in patients ]
         print(paths)
         return paths
 
@@ -94,6 +123,9 @@ def normal_bam(wildcards):
 ##########
 # functions for prefixing files with argument names
 ##########
+
+# Mutect
+
 def get_mutect_input(wildcards):
     tumors_in = []
     [ tumors_in.extend( ["-I", tumors[wildcards.patient][s]] ) for s in sorted(tumors[wildcards.patient]) ]
@@ -128,6 +160,28 @@ def get_seg_input(patient):
     [ x.extend([ "--tumor-segmentation", f"mutect/{patient}/{s}_segments.table"]) for s in sorted(tumors[patient]) ]
     return x
 
+# Strelka
+
+def get_vcfs_per_patient(wildcards):
+   x = [f"strelka/{wildcards.patient}/{s}/results/variants/somatic.snvs.tumor.renamed.vcf.gz" for s in sorted(tumors[wildcards.patient])]
+   y = [f"strelka/{wildcards.patient}/{s}/results/variants/somatic.snvs.tumor.renamed.vcf.gz.tbi" for s in sorted(tumors[wildcards.patient])]
+   return x+y
+
+def get_vcfs_per_patient_string(wildcards):
+    x = [f"strelka/{wildcards.patient}/{s}/results/variants/somatic.snvs.tumor.renamed.vcf.gz" for s in sorted(tumors[wildcards.patient])]
+    r = " ".join(x)
+    return r
+
+def get_vcfs_per_patient2(wildcards):
+   x = [f"strelka/{wildcards.patient}/{s}/joint/results/variants/somatic.snvs.tumor.renamed.vcf.gz" for s in sorted(tumors[wildcards.patient])]
+   y = [f"strelka/{wildcards.patient}/{s}/joint/results/variants/somatic.snvs.tumor.renamed.vcf.gz.tbi" for s in sorted(tumors[wildcards.patient])]
+   return x+y
+
+def get_vcfs_per_patient_string2(wildcards):
+    x = [f"strelka/{wildcards.patient}/{s}/joint/results/variants/somatic.snvs.tumor.renamed.vcf.gz" for s in sorted(tumors[wildcards.patient])]
+    r = " ".join(x)
+    return r
+
 ##################
 # GLOBALS
 ##################
@@ -137,6 +191,10 @@ def get_seg_input(patient):
 # normals[patient] = bam
 tumors, normals = get_samples_by_patient() 
 
+# intervals for mutect2
+INTERVALS = [str(i) for i in range(1,config['autosomes_to_genotype']+1)]
+if config['genotype_sexchroms']:
+    INTERVALS.extend(["X","Y"])
 
 
 

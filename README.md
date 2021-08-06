@@ -1,4 +1,7 @@
-Simple snakemake workflow to detect somatic variants in tumors. At the moment, this code is optimized to run on Computer Science Department's HPC at Princeton University.
+Simple snakemake workflow to detect somatic variants in tumors. At the moment, this code is optimized to run on Computer Science Department's HPC at Princeton University. To run, create  
+
+1. A samples file (e.g. like ones in `samples_files` directory) that gives the location of BAM files, whether it's tumor/normal, and what patient it belongs to
+2. A config file (e.g. like ones in `config_files` directory), and specify this file within the `functions.py` module.
 
 Please make sure that BAM files have been pre-processed for variant calling. This may include e.g. marking duplicates for WGS BAMs.
 

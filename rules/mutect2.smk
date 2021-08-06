@@ -165,6 +165,17 @@ rule filterVcfPass:
         "--min-alleles 2 --max-alleles 2 "
         "> {output.vcf}"
 
-
+rule compressVCF:
+    input:
+        vcf = "mutect/{patient}/filtered_PASS_biallelic.vcf"
+    output: 
+        vcf = "mutect/{patient}/filtered_PASS_biallelic.vcf.gz"
+    resources: 
+        mem_mb = lambda wildcards, attempt: attempt * 3000
+    conda:
+        "../envs/varcall.yml"
+    shell:
+        "bgzip {input.vcf}\n"
+        "tabix {output.vcf}"
 
 

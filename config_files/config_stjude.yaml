@@ -1,8 +1,12 @@
 
 # reference genome
-reference: /n/fs/ragr-data/datasets/ref-genomes/GRCh37_NCBI/GRCh37.p13.fa 
+#reference: /n/fs/ragr-data/datasets/ref-genomes/GRCh37_NCBI/GRCh37.p13.fa 
+reference: /n/fs/ragr-data/datasets/ref-genomes/hg19_Remixt/Homo_sapiens.GRCh37.70.dna.chromosomes.fa
 
-samples: samples.txt
+samples: samples_files/samples_stjude.txt
+
+autosomes_to_genotype: 3
+genotype_sexchroms: False
 
 resources:
     varscan:

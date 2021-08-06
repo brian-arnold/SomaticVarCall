@@ -2,14 +2,17 @@
 # reference genome
 reference: /n/fs/ragr-data/datasets/ref-genomes/GRCh37_NCBI/GRCh37.p13.fa 
 
-samples: samples.txt
+samples: samples_files/samples_Gundem.txt
 
-autosomes_to_genotype: 23
+autosomes_to_genotype: 22
 genotype_sexchroms: True
 
 resources:
     varscan:
         memory: 30000 # Allocated memory (in MB)
+
+strelka2:
+    cores: 10
 
 mutect2:
     # note, all supplementary database VCF files must be indexed, with .idx prefix

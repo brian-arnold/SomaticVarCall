@@ -1,6 +1,8 @@
 .snakemake
 __pycache__
 mutect/*
+strelka/*
+intersect/*
 
 # external databases for mutect2
 resources/panel_of_normals/hg19/*
