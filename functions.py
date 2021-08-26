@@ -2,8 +2,8 @@ import os
 from collections import defaultdict
 from snakemake import load_configfile
 
-config = load_configfile('config_files/config_stjude.yaml')
-#config = load_configfile('config.yaml')
+#config = load_configfile('config_files/config_stjude.yaml')
+config = load_configfile('config_files/config_Gundem.yaml')
 
 # This file contains (1) functions used by the snakemake rules
 # and (2) global variables accessed by these functions, e.g.

@@ -1,15 +1,13 @@
 
 # reference genome
-reference: /n/fs/ragr-data/datasets/ref-genomes/GRCh37_NCBI/GRCh37.p13.fa 
+#reference: /n/fs/ragr-data/datasets/ref-genomes/GRCh37_NCBI/GRCh37.p13.fa 
+#reference: /n/fs/ragr-research/users/bjarnold/SomaticVarCall/resources/ref_genomes/hg19/Homo_sapiens_assembly19.fasta
+reference: /n/fs/ragr-research/users/bjarnold/SomaticVarCall/resources/ref_genomes/hg19/hs37d5.fa
 
 samples: samples_files/samples_Gundem.txt
 
 autosomes_to_genotype: 22
 genotype_sexchroms: True
-
-resources:
-    varscan:
-        memory: 30000 # Allocated memory (in MB)
 
 strelka2:
     cores: 10

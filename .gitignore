@@ -12,3 +12,5 @@ resources/germline_resource/hg38/*
 resources/common_alleles/hg19/*
 resources/common_alleles/hg38/*
 
+# other reference genomes
+resources/ref_genomes/hg19/*
